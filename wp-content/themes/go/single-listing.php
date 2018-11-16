@@ -13,9 +13,14 @@ function enqueue_single_listing_scripts() {
 	wp_enqueue_script( 'jquery-validate', array('jquery'), true, true );
 	wp_enqueue_script( 'fitvids', array('jquery'), true, true );
 	wp_enqueue_script( 'wp-listings-single', array('jquery, jquery-ui-tabs', 'jquery-validate'), true, true );
-	
-	wp_register_script ( 'vuejs', get_template_directory_uri() . '/js/vue.min.js' );
-	wp_enqueue_script( 'vuejs', array('jquery'), true, true );
+  
+  wp_register_style ( 'bootstrap-grid', get_template_directory_uri() . '/css/bootstrap-grid.min.css' );
+  wp_enqueue_style( 'bootstrap-grid' );
+
+  wp_register_script ( 'vuejs', get_template_directory_uri() . '/js/vue.min.js' );
+  wp_register_script ( 'lodash', get_template_directory_uri() . '/js/lodash.min.js' );
+  wp_enqueue_script( 'vuejs', array('jquery'), true, true );
+  wp_enqueue_script( 'lodash', array('jquery'), true, true );
 }
 
 function single_listing_post_content() {
@@ -46,39 +51,39 @@ function single_listing_post_content() {
         <div class="white">
         <div class="col-md-6 col-xs-6">
           <label for="postcode">Postcode:</label>
-          <input id="postcode" class="form-control" v-model="property.zip" type="number"/>
+          <input id="postcode" class="form-control" v-model="calculator_options.zip" type="number"/>
         </div>
         <div class="col-md-6 col-xs-6">
           <label for="postcode">Sale Price:</label>
-          <input id="postcode" class="form-control" v-model="property.price" type="number"/>
+          <input id="postcode" class="form-control" v-model="calculator_options.sale_price" type="number"/>
         </div>
         <div class="col-md-6 col-xs-6">
           <label for="beds">Beds:</label>
-          <input type="number" id="beds" class="form-control" v-model="property.bedrooms"/>
+          <input type="number" id="beds" class="form-control" v-model="calculator_options.beds"/>
         </div>
         <div class="col-md-6 col-xs-6">
           <label for="baths">Baths:</label>
-          <input id="baths" class="form-control" v-model="property.bathrooms" type="number"/>
+          <input id="baths" class="form-control" v-model="calculator_options.baths" type="number"/>
         </div>
         <div class="col-md-6 col-xs-6">
           <label for="living">Living:</label>
-          <input id="living" class="form-control" value="1" type="number"/>
+          <input id="living" class="form-control" v-model="calculator_options.living" type="number"/>
         </div>
         <div class="col-md-6 col-xs-6">
           <label for="toilets">toilets:</label>
-          <input id="toilets" class="form-control" value="0" type="number"/>
+          <input id="toilets" class="form-control" v-model="calculator_options.toilets" type="number"/>
         </div>
         <div class="col-md-6 col-xs-6">
           <label for="type">Dwelling Type</label>
-          <select id="area" class="form-control">
-            <option>House</option>
-            <option>Unit</option>
-            <option>Apartment</option>
+          <select id="area" class="form-control" v-model="calculator_options.dwelling_type">
+            <option value="house">House</option>
+            <option value="unit">Unit</option>
+            <option value="apartment">Apartment</option>
           </select>
         </div>
         <div class="col-md-6 col-xs-6">
           <label for="type">Levels</label>
-          <select id="area" class="form-control">
+          <select id="area" class="form-control" v-model="calculator_options.levels">
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -86,7 +91,7 @@ function single_listing_post_content() {
         </div>
         <div class="col-md-12 col-xs-12">
           <label for="area">Floor Area:</label>
-          <input id="area" class="form-control input-lg" type="number"/>
+          <input id="area" class="form-control input-lg" type="number" v-model="calculator_options.floor_area"/>
         </div>
       </div>
     </div>
@@ -172,13 +177,13 @@ if (function_exists('equity')) {
   <script type="text/x-template" id="project-row-head-template">
     <div class="project-row-head bg-grey-200">
       <div class="row black padding-10">
-        <div class="col-md-1">
+        <div class="col-md-2">
           <div class="font-size-20 font-weight-600 text-center">Area</div>
         </div>
         <div class="col-md-3">
           <div class="font-size-20 font-weight-600 text-center">{{ data.title_name }}</div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <div class="font-size-20 font-weight-600 text-center">{{ data.quality_name }}</div>
         </div>
         <div class="col-md-2">
@@ -194,24 +199,26 @@ if (function_exists('equity')) {
   <script type="text/x-template" id="project-row-project-template">
     <div class="project-row-project">
       <div class="row black padding-10">
-        <div class="col-md-1">
-          <input type="number" class="form-control"/>
+        <div class="col-md-2">
+          <input type="number" class="form-control" v-model="data.area"/>
         </div>
         <div class="col-md-3">
           <div class="font-size-20 font-weight-600 text-center">
-            {{ data.title }} <span><input type="checkbox" checked value="yes"/></span>
+            {{ data.title }} <span><input type="checkbox" v-model="data.checked" value="yes"/></span>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="col-md-4">
-            <input type="radio" name="quality" value="poor"><br>Poor
+        <div class="col-md-3">
+          <div class="d-flex">
+            <div class="flex-fill" v-for="quality in data.quality">
+              <label><input type="radio" v-model="data.selected_quality" v-bind:value="quality.price"><br>{{ quality.title }}</label>
+            </div>
           </div>
         </div>
         <div class="col-md-2">
-          <div class="font-size-20 font-weight-600 text-center">$5000</div>
+          <div class="font-size-20 font-weight-600 text-center">${{ minQualityPrice() }}</div>
         </div>
         <div class="col-md-2">
-          <div class="font-size-20 font-weight-600 text-center">$7000</div>
+          <div class="font-size-20 font-weight-600 text-center">${{ maxQualityPrice() }}</div>
         </div>
       </div>
     </div>
@@ -224,6 +231,134 @@ if (function_exists('equity')) {
         <project-row-project v-bind:data="project" v-for="project in data.projects"/>
       </div>
     </div>
+  </script>
+
+  <script>
+    var property_data = {
+      'baths': parseInt('<?php echo get_post_meta( $post->ID, 'bathrooms', true ) ?>') || 0,
+      'beds': parseInt('<?php echo get_post_meta( $post->ID, 'bedrooms', true ) ?>') || 0,
+      'zip': '<?php echo get_post_meta( $post->ID, 'address_parts_postcode', true ) ?>',
+      'floor_area': parseInt('<?php echo get_post_meta( $post->ID, '_listing_floors', true ) ?>') || 0,
+      'sale_price': parseInt('<?php echo get_post_meta( $post->ID, '_listing_price', true ) ?>'.replace( /^\D+/g, '').replace(/,/g, '')),
+    };
+
+    var calculator_options = {
+      'total_price': 0,
+      'zip': '<?php echo get_field('postcode', 'option'); ?>',
+      'sale_price': parseInt('<?php echo get_field('sale_price', 'option'); ?>') || 0,
+      'beds': parseInt('<?php echo get_field('beds', 'option'); ?>') || 0,
+      'baths': parseInt('<?php echo get_field('baths', 'option'); ?>') || 0,
+      'living': parseInt('<?php echo get_field('living', 'option'); ?>') || 0,
+      'toilets': parseInt('<?php echo get_field('toilets', 'option'); ?>') || 0,
+      'dwelling_type': '<?php echo get_field('dwelling_type', 'option'); ?>',
+      'levels': '<?php echo get_field('levels', 'option'); ?>',
+      'floor_area': parseInt('<?php echo get_field('floor_area', 'option'); ?>') || 0,
+      'project_row': <?php echo wp_json_encode(get_field('project_row', 'option')) ?>
+    }
+
+    calculator_options = _.defaults(property_data, calculator_options);
+
+    // init floor area
+    if( calculator_options.floor_area == 0 )
+    {
+      calculator_options.floor_area = calculator_options.beds * 15 
+                                      + calculator_options.baths * 6
+                                      + 10 //kitchen
+                                      + calculator_options.living * 20 //living
+                                      + 10 //dining
+                                      + 4; //hallway
+
+    }
+
+    var app = null;
+    jQuery(function(){
+      app = new Vue({
+        el: '#property-valuation-calculator',
+        data: {
+          calculator_options: calculator_options
+        },
+        filters: {
+          round2: function(value){
+            return Math.round(value * 100) / 100
+          }
+        },
+        methods: {
+          estimate: function(){
+            let total_price = _.sumBy(calculator_options.project_row, (project_row)=>{
+
+              let project_type = project_row.title_name.toLowerCase();
+              let multiplier = this.calc_multiplier(project_type);
+
+              let project_price = _.sumBy(project_row.projects, (project)=>{
+                return this.calc_project_quality_price(project);
+              });
+
+              return project_price * multiplier;
+            });
+
+            calculator_options.total_price = total_price;
+
+            return total_price;
+          },
+          calc_multiplier: function(project_type){
+            if(project_type=="painting" || project_type=="flooring")
+            {
+              if(calculator_options.floor_area < 50){
+                return 1.5;
+              }
+              if(calculator_options.floor_area < 100){
+                return 1;
+              }
+              if(calculator_options.floor_area < 200){
+                return 0.8;
+              }
+              return 0.8;
+            }
+
+            if(project_type=="renovations"){
+              if(calculator_options.floor_area < 4){
+                return 1.2;
+              }
+              if(calculator_options.floor_area < 6){
+                return 1;
+              }
+              if(calculator_options.floor_area == 6){
+                return 0.8;
+              }
+              return 0.8;
+            }
+
+            return 1;
+          },
+          calc_project_quality_price: function(project){
+            if(project.checked==true && project.selected_quality)
+            {
+              return project.selected_quality * project.area;
+            } else{
+              return 0;
+            }
+          },
+          calc_floor_area: function(){
+            let floor_area = calculator_options.beds * 15 
+                    + calculator_options.baths * 6
+                    + 10 //kitchen
+                    + calculator_options.living * 20 //living
+                    + 10 //dining
+                    + 4; //hallway
+
+            calculator_options.floor_area = floor_area;
+
+            return floor_area;
+          },
+          calc_portion: function(){
+            let low = calculator_options.total_price * 85.0 / 100.0;
+            let high = calculator_options.total_price * 115.0 / 100.0; 
+            let portion_of_value = calculator_options.total_price / calculator_options.sale_price;
+            return portion_of_value;
+          }
+        }
+      });
+    });
   </script>
 
   <script>
@@ -244,6 +379,25 @@ if (function_exists('equity')) {
           default: () => {}
         }
       },
+      methods:{
+        minQualityPrice: function(){
+          let object =  _.minBy(this.data.quality, function(o) { return o.price; });
+          if(this.data.area == 0)
+          {
+            return object.price * calculator_options.floor_area;
+          }
+          return object.price * this.data.area;
+        },
+        maxQualityPrice: function(){
+          let object =  _.maxBy(this.data.quality, function(o) { return o.price; });
+          if(this.data.area == 0)
+          {
+            return object.price * calculator_options.floor_area;
+          }
+          return object.price  * this.data.area;
+        }
+      },
+
       template: '#project-row-project-template'
     });
 
@@ -260,7 +414,7 @@ if (function_exists('equity')) {
       template: '#project-row-template'
     });
   </script>
-
+  
   <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <div id="property-valuation-calculator" class="row margin-top-20 text-center">
       <div class="col-md-10 col-md-offset-1">
@@ -273,9 +427,9 @@ if (function_exists('equity')) {
 
             <?php single_listing_post_content(); ?>
 
-            <div id="project-rows" class="bg-blue-grey-700">
+            <div class="bg-blue-grey-700">
               <div class="row white padding-10">
-                <div class="col-md-1">
+                <div class="col-md-2">
                   <div class="font-size-20 font-weight-600 text-center">
                     Area
                   </div>
@@ -285,7 +439,7 @@ if (function_exists('equity')) {
                     Project
                   </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                   <div class="font-size-20 font-weight-600 text-center">
                     Quality
                   </div>
@@ -298,19 +452,21 @@ if (function_exists('equity')) {
               </div>
             </div>
 
-            <project-row v-bind:data="project_row" v-for="project_row in calculator_options.project_row"/>
+            <div id="project-rows">
+              <project-row v-bind:data="project_row" v-for="project_row in calculator_options.project_row"/>
+            </div>
                     
             <div class="panel-footer bg-blue-grey-700">
-              <div class="font-size-30 font-weight-600 white">Total Estimate: $0.00</div><br>
+              <div class="font-size-30 font-weight-600 white">Total Estimate: ${{ parseInt(estimate()) }}</div><br>
               <small>**All pricing data is pulled from previous projects from the houseace platform, this is only a price guide and there is liability to these prices</small>
               <hr>
+              <div class="font-size-30 font-weight-600 white">Price Assumptions</div>
               <div class="row">
-                <div class="font-size-30 font-weight-600 white">Price Assumptions</div>
                 <div class="col-md-6">
-                  <div class="font-size-30 font-weight-600 white">Rent Increase: 0-0%</div>
+                  <div class="font-size-30 font-weight-600 white">Rent Increase: {{ calc_portion() * 1 | round2 }}-{{ calc_portion() * 1.5 | round2}}%</div>
                 </div>
                 <div class="col-md-6">
-                  <div class="font-size-30 font-weight-600 white">Value Increase: 0-0%</div>
+                  <div class="font-size-30 font-weight-600 white">Value Increase: {{ calc_portion() * 1.5 | round2 }}-{{ calc_portion() * 2.5 | round2}}%</div>
                 </div>
               </div>
             </div>
@@ -322,47 +478,6 @@ if (function_exists('equity')) {
       </div>
     </div>
   </article><!-- #post-ID -->  
-
-  <?php
-    $post->post_meta = get_post_meta($post->ID, '', true);
-  ?>
-  <script>
-    var property_data = {
-      'bathrooms': '<?php echo get_post_meta( $post->ID, 'bathrooms', true ) ?>',
-      'bedrooms': '<?php echo get_post_meta( $post->ID, 'bedrooms', true ) ?>',
-      'zip': '<?php echo get_post_meta( $post->ID, 'address_parts_postcode', true ) ?>',
-      'floorplans_count': '<?php echo get_post_meta( $post->ID, 'floorplans_count', true ) ?>',
-      'price': '<?php echo get_post_meta( $post->ID, '_listing_price', true ) ?>'.replace( /^\D+/g, '').replace(/,/g, ''),
-    };
-    
-    var calculator_options = {
-      'zip': '<?php echo get_field('postcode', 'option'); ?>',
-      'sale_price': '<?php echo get_field('sale_price', 'option'); ?>',
-      'beds': '<?php echo get_field('beds', 'option'); ?>',
-      'baths': '<?php echo get_field('baths', 'option'); ?>',
-      'living': '<?php echo get_field('living', 'option'); ?>',
-      'toilets': '<?php echo get_field('toilets', 'option'); ?>',
-      'dwelling_type': '<?php echo get_field('dwelling_type', 'option'); ?>',
-      'levels': '<?php echo get_field('levels', 'option'); ?>',
-      'floor_area': '<?php echo get_field('floor_area', 'option'); ?>',
-      'project_row': <?php echo wp_json_encode(get_field('project_row', 'option')) ?>
-    }
-    
-    console.log(calculator_options);
-    console.log(property_data);
-    
-    var obj = <?php echo wp_json_encode($post); ?>;
-    
-    console.log(obj);
-    
-    var app = new Vue({
-      el: '#property-valuation-calculator',
-      data: {
-        property: property_data,
-        calculator_options: calculator_options
-      }
-    })
-  </script>
   <?php
   // Previous/next post navigation.
   wp_listings_post_nav();
