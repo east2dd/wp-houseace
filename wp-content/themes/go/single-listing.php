@@ -232,14 +232,24 @@ if (function_exists('equity')) {
       </div>
     </div>
   </script>
+  <?php 
+    $sold_details = get_field( "sold_details" );
+
+    $sold_price = '';
+
+    if( $sold_details ) {
+        $sold_price = $sold_details['sold_price'];
+    }
+  ?>
 
   <script>
+    <?php get_field( 'sold_details', $post->ID ) ?>
     var property_data = {
       'baths': parseInt('<?php echo get_post_meta( $post->ID, 'bathrooms', true ) ?>') || 0,
       'beds': parseInt('<?php echo get_post_meta( $post->ID, 'bedrooms', true ) ?>') || 0,
       'zip': '<?php echo get_post_meta( $post->ID, 'address_parts_postcode', true ) ?>',
       'floor_area': parseInt('<?php echo get_post_meta( $post->ID, '_listing_floors', true ) ?>') || 0,
-      'sale_price': parseInt('<?php echo get_post_meta( $post->ID, '_listing_price', true ) ?>'.replace( /^\D+/g, '').replace(/,/g, '')),
+      'sale_price': parseInt('<?php echo $sold_price ?>'.replace( /^\D+/g, '').replace(/,/g, '')),
     };
 
     var calculator_options = {
@@ -353,7 +363,7 @@ if (function_exists('equity')) {
           calc_portion: function(){
             let low = calculator_options.total_price * 85.0 / 100.0;
             let high = calculator_options.total_price * 115.0 / 100.0; 
-            let portion_of_value = calculator_options.total_price / calculator_options.sale_price;
+            let portion_of_value = calculator_options.total_price / calculator_options.sale_price * 100;
             return portion_of_value;
           }
         }
