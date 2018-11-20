@@ -15,12 +15,16 @@ function enqueue_single_listing_scripts() {
 	wp_enqueue_script( 'wp-listings-single', array('jquery, jquery-ui-tabs', 'jquery-validate'), true, true );
   
   wp_register_style ( 'bootstrap-grid', get_template_directory_uri() . '/css/bootstrap-grid.min.css' );
-  wp_enqueue_style( 'bootstrap-grid' );
+  wp_register_style ( 'flickity', get_template_directory_uri() . '/css/flickity.min.css' );
+  //wp_enqueue_style( 'bootstrap-grid' );
+  wp_enqueue_style( 'flickity' );
 
   wp_register_script ( 'vuejs', get_template_directory_uri() . '/js/vue.min.js' );
   wp_register_script ( 'lodash', get_template_directory_uri() . '/js/lodash.min.js' );
+  wp_register_script ( 'flickity', get_template_directory_uri() . '/js/flickity.min.js' );
   wp_enqueue_script( 'vuejs', array('jquery'), true, true );
   wp_enqueue_script( 'lodash', array('jquery'), true, true );
+  wp_enqueue_script( 'flickity', array('jquery'), true, true );
 }
 
 function single_listing_post_content() {
@@ -31,71 +35,71 @@ function single_listing_post_content() {
 	?>
 
   <div itemscope itemtype="http://schema.org/SingleFamilyResidence" class="entry-content wplistings-single-listing">
-    <div class="bg-red-600 row">
-      <div class="col-md-8">
-        <figure class="overlay">
-          <div class="listing-image-wrap">
-            <?php echo '<div class="overlay-figure" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">'. get_the_post_thumbnail( $post->ID, 'listings-full', array('class' => 'single-listing-image', 'itemprop'=>'contentUrl') ) . '</div>'; ?>
+      <div class="bg-red-600 row">
+        <div class="col-md-8">
+          <figure class="overlay">
+            <div class="listing-image-wrap">
+              <div class="overlay-figure" class="carousel"  data-flickity='{ "imagesLoaded": true }' itemprop="image" itemscope itemtype="http://schema.org/ImageObject" v-html="calculator_options.gallery">
+              </div>
+            </div>
+            <figcaption class="overlay-bottom text-left overlay-panel overlay-background">
+              <a v-bind:href="calculator_options.seo_url" target='_blank'>View Property on domain</a>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="col-md-4 padding-left-0">
+          <div class="navbar-brand pull-left">
+            <a href="<?php bloginfo('url'); ?>">
+              <img class="navbar-brand-logo" src="<?php bloginfo('template_url'); ?>/assets/images/housewt.png" title="Houseace">
+            </a> <div class="font-size-10 white inline">Estimator</div>
           </div>
-          <figcaption class="overlay-bottom text-left overlay-panel overlay-background">
-            <h4>Domain Link: <a href="#">http://domain.com.au</a> </h4>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="col-md-4 padding-left-0">
-        <div class="navbar-brand pull-left">
-          <a href="<?php bloginfo('url'); ?>">
-            <img class="navbar-brand-logo" src="<?php bloginfo('template_url'); ?>/assets/images/housewt.png" title="Houseace">
-          </a> <div class="font-size-10 white inline">Estimator</div>
-        </div>
-        <div class="white">
-        <div class="col-md-6 col-xs-6">
-          <label for="postcode">Postcode:</label>
-          <input id="postcode" class="form-control" v-model="calculator_options.zip" type="number"/>
-        </div>
-        <div class="col-md-6 col-xs-6">
-          <label for="postcode">Sale Price:</label>
-          <input id="postcode" class="form-control" v-model="calculator_options.sale_price" type="number"/>
-        </div>
-        <div class="col-md-6 col-xs-6">
-          <label for="beds">Beds:</label>
-          <input type="number" id="beds" class="form-control" v-model="calculator_options.beds"/>
-        </div>
-        <div class="col-md-6 col-xs-6">
-          <label for="baths">Baths:</label>
-          <input id="baths" class="form-control" v-model="calculator_options.baths" type="number"/>
-        </div>
-        <div class="col-md-6 col-xs-6">
-          <label for="living">Living:</label>
-          <input id="living" class="form-control" v-model="calculator_options.living" type="number"/>
-        </div>
-        <div class="col-md-6 col-xs-6">
-          <label for="toilets">toilets:</label>
-          <input id="toilets" class="form-control" v-model="calculator_options.toilets" type="number"/>
-        </div>
-        <div class="col-md-6 col-xs-6">
-          <label for="type">Dwelling Type</label>
-          <select id="area" class="form-control" v-model="calculator_options.dwelling_type">
-            <option value="house">House</option>
-            <option value="unit">Unit</option>
-            <option value="apartment">Apartment</option>
-          </select>
-        </div>
-        <div class="col-md-6 col-xs-6">
-          <label for="type">Levels</label>
-          <select id="area" class="form-control" v-model="calculator_options.levels">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-          </select>
-        </div>
-        <div class="col-md-12 col-xs-12">
-          <label for="area">Floor Area:</label>
-          <input id="area" class="form-control input-lg" type="number" v-model="calculator_options.floor_area"/>
+          <div class="white">
+          <div class="col-md-6 col-xs-6">
+            <label for="postcode">Postcode:</label>
+            <input id="postcode" class="form-control" v-model="calculator_options.zip" type="number"/>
+          </div>
+          <div class="col-md-6 col-xs-6">
+            <label for="postcode">Sale Price:</label>
+            <input id="postcode" class="form-control" v-model="calculator_options.sale_price" type="number"/>
+          </div>
+          <div class="col-md-6 col-xs-6">
+            <label for="beds">Beds:</label>
+            <input type="number" id="beds" class="form-control" v-model="calculator_options.beds"/>
+          </div>
+          <div class="col-md-6 col-xs-6">
+            <label for="baths">Baths:</label>
+            <input id="baths" class="form-control" v-model="calculator_options.baths" type="number"/>
+          </div>
+          <div class="col-md-6 col-xs-6">
+            <label for="living">Living:</label>
+            <input id="living" class="form-control" v-model="calculator_options.living" type="number"/>
+          </div>
+          <div class="col-md-6 col-xs-6">
+            <label for="toilets">toilets:</label>
+            <input id="toilets" class="form-control" v-model="calculator_options.toilets" type="number"/>
+          </div>
+          <div class="col-md-6 col-xs-6">
+            <label for="type">Dwelling Type</label>
+            <select id="area" class="form-control" v-model="calculator_options.dwelling_type">
+              <option value="house">House</option>
+              <option value="unit">Unit</option>
+              <option value="apartment">Apartment</option>
+            </select>
+          </div>
+          <div class="col-md-6 col-xs-6">
+            <label for="type">Levels</label>
+            <select id="area" class="form-control" v-model="calculator_options.levels">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+          </div>
+          <div class="col-md-12 col-xs-12">
+            <label for="area">Floor Area:</label>
+            <input id="area" class="form-control input-lg" type="number" v-model="calculator_options.floor_area"/>
+          </div>
         </div>
       </div>
-    </div>
-   
    <?php
    $listing_meta = sprintf( '<div class="list-group hidden">');
 
@@ -177,20 +181,21 @@ if (function_exists('equity')) {
   <script type="text/x-template" id="project-row-head-template">
     <div class="project-row-head bg-grey-200">
       <div class="row black padding-10">
-        <div class="col-md-2">
-          <div class="font-size-20 font-weight-600 text-center">Area</div>
+        <div class="col-md-1">
+          <div class="font-size-15 font-weight-600 text-center">Area</div>
         </div>
         <div class="col-md-3">
-          <div class="font-size-20 font-weight-600 text-center">{{ data.title_name }}</div>
+          <div class="font-size-15 font-weight-600 text-center">{{ data.title_name }}</div>
         </div>
         <div class="col-md-3">
-          <div class="font-size-20 font-weight-600 text-center">{{ data.quality_name }}</div>
+          <div class="font-size-15 font-weight-600 text-center">{{ data.quality_name }}</div>
         </div>
-        <div class="col-md-2">
-          <div class="font-size-20 font-weight-600 text-center">Low</div>
+        <div class="col-md-3">
+          <div class="font-size-15 font-weight-600 inline text-center">Low |</div>
+          <div class="font-size-15 font-weight-600 inline text-center">| High</div>
         </div>
-        <div class="col-md-2">
-          <div class="font-size-20 font-weight-600 text-center">High</div>
+         <div class="col-md-2">
+          <div class="font-size-15 font-weight-600 text-center">Actions</div>
         </div>
       </div>
     </div>
@@ -199,8 +204,8 @@ if (function_exists('equity')) {
   <script type="text/x-template" id="project-row-project-template">
     <div class="project-row-project">
       <div class="row black padding-10">
-        <div class="col-md-2">
-          <input type="number" class="form-control" v-model="data.area"/>
+        <div class="col-md-1">
+          <input type="number"  class="form-control" v-model="data.area"/>
         </div>
         <div class="col-md-3">
           <div class="font-size-20 font-weight-600 text-center">
@@ -209,21 +214,23 @@ if (function_exists('equity')) {
         </div>
         <div class="col-md-3">
           <div class="d-flex">
-            <div class="flex-fill" v-for="quality in data.quality">
-              <label><input type="radio" v-model="data.selected_quality" v-bind:value="quality.price"><br>{{ quality.title }}</label>
-            </div>
+            <span v-for="quality in data.quality">
+              &nbsp;
+              <label><input type="radio" v-model="data.selected_quality" :value="quality.price"><br>{{ quality.title }}</label>
+              &nbsp;
+            </span>
           </div>
         </div>
-        <div class="col-md-2">
-          <div class="font-size-20 font-weight-600 text-center">${{ minQualityPrice() }}</div>
+        <div class="col-md-3">
+          <div class="font-size-20 font-weight-600 inline text-center">${{ minQualityPrice() }} |</div>
+          <div class="font-size-20 font-weight-600 inline text-center">| ${{ maxQualityPrice() }}</div>
         </div>
         <div class="col-md-2">
-          <div class="font-size-20 font-weight-600 text-center">${{ maxQualityPrice() }}</div>
+         <a v-bind:href="'/add_quote/?templateId=' + data.link" class="btn btn-sm btn-raised btn-primary">Free Quote</a>
         </div>
       </div>
     </div>
   </script>
-
   <script type="text/x-template" id="project-row-template">
     <div class="project-row">
       <project-row-head v-bind:data="data"/>
@@ -243,13 +250,15 @@ if (function_exists('equity')) {
   ?>
 
   <script>
-    <?php get_field( 'sold_details', $post->ID ) ?>
+    var property_meta = <?php echo wp_json_encode(get_post_meta( $post->ID, null, true )); ?>;
     var property_data = {
       'baths': parseInt('<?php echo get_post_meta( $post->ID, 'bathrooms', true ) ?>') || 0,
       'beds': parseInt('<?php echo get_post_meta( $post->ID, 'bedrooms', true ) ?>') || 0,
       'zip': '<?php echo get_post_meta( $post->ID, 'address_parts_postcode', true ) ?>',
       'floor_area': parseInt('<?php echo get_post_meta( $post->ID, '_listing_floors', true ) ?>') || 0,
       'sale_price': parseInt('<?php echo $sold_price ?>'.replace( /^\D+/g, '').replace(/,/g, '')),
+      'seo_url': '<?php echo get_field( "seo_url" )?>',
+      'gallery': (property_meta._listing_gallery?property_meta._listing_gallery[0]:'') 
     };
 
     var calculator_options = {
@@ -277,15 +286,25 @@ if (function_exists('equity')) {
                                       + calculator_options.living * 20 //living
                                       + 10 //dining
                                       + 4; //hallway
+                                      + 2; //toilet
 
     }
 
     var app = null;
+    _.map(calculator_options.project_row, function(project_row){
+      _.map(project_row.projects, function(project){
+        project.selected_quality = project.quality[parseInt(project.quality.length / 2)].price;
+      });
+    });
+    
     jQuery(function(){
       app = new Vue({
         el: '#property-valuation-calculator',
         data: {
           calculator_options: calculator_options
+        },
+        mounted: function(){
+          
         },
         filters: {
           round2: function(value){
@@ -341,6 +360,7 @@ if (function_exists('equity')) {
             return 1;
           },
           calc_project_quality_price: function(project){
+
             if(project.checked==true && project.selected_quality)
             {
               return project.selected_quality * project.area;
@@ -390,21 +410,31 @@ if (function_exists('equity')) {
         }
       },
       methods:{
+        // minQualityPrice: function(){
+        //   let object =  _.minBy(this.data.quality, function(o) { return o.price; });
+        //   if(this.data.area == 0)
+        //   {
+        //     return object.price * calculator_options.floor_area;
+        //   }
+        //   return object.price * this.data.area;
+        // },
+        // maxQualityPrice: function(){
+        //   let object =  _.maxBy(this.data.quality, function(o) { return o.price; });
+        //   if(this.data.area == 0)
+        //   {
+        //     return object.price * calculator_options.floor_area;
+        //   }
+        //   return object.price  * this.data.area;
+        // },
         minQualityPrice: function(){
-          let object =  _.minBy(this.data.quality, function(o) { return o.price; });
-          if(this.data.area == 0)
-          {
-            return object.price * calculator_options.floor_area;
-          }
-          return object.price * this.data.area;
+          let floor_area = this.data.area || calculator_options.floor_area;
+          let price = parseInt(this.data.selected_quality * floor_area * 0.85);
+          return price;
         },
         maxQualityPrice: function(){
-          let object =  _.maxBy(this.data.quality, function(o) { return o.price; });
-          if(this.data.area == 0)
-          {
-            return object.price * calculator_options.floor_area;
-          }
-          return object.price  * this.data.area;
+          let floor_area = this.data.area || calculator_options.floor_area;
+          let price = parseInt(this.data.selected_quality * floor_area * 1.15);
+          return price;
         }
       },
 
@@ -439,7 +469,7 @@ if (function_exists('equity')) {
 
             <div class="bg-blue-grey-700">
               <div class="row white padding-10">
-                <div class="col-md-2">
+                <div class="col-md-1">
                   <div class="font-size-20 font-weight-600 text-center">
                     Area
                   </div>
@@ -454,9 +484,14 @@ if (function_exists('equity')) {
                     Quality
                   </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                   <div class="font-size-20 font-weight-600 text-center">
                     Budget Range
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="font-size-20 font-weight-600 text-center">
+                    Action
                   </div>
                 </div>
               </div>
@@ -468,8 +503,7 @@ if (function_exists('equity')) {
                     
             <div class="panel-footer bg-blue-grey-700">
               <div class="font-size-30 font-weight-600 white">Total Estimate: ${{ parseInt(estimate()) }}</div><br>
-              <small>**All pricing data is pulled from previous projects from the houseace platform, this is only a price guide and there is liability to these prices</small>
-              <hr>
+              <small>**All pricing data is pulled from previous projects from the Houseace platform, all property data is served from domain.com.au, this is only a price guide. For a more detailed pricing click the "Free Quote" button.</small>
               <div class="font-size-30 font-weight-600 white">Price Assumptions</div>
               <div class="row">
                 <div class="col-md-6">
@@ -480,18 +514,17 @@ if (function_exists('equity')) {
                 </div>
               </div>
             </div>
-            <div class="padding-20">
-              <a class="btn btn-primary btn-block btn-raised btn-lg" href="/add_quote">Get an Instant Quote</a>
-            </div>
           </div>
         </div>
       </div>
     </div>
+    
+    
   </article><!-- #post-ID -->  
-  <?php
-  // Previous/next post navigation.
-  wp_listings_post_nav();
+   
 
+    
+  <?php
   // If comments are open or we have at least one comment, load up the comment template.
   if ( comments_open() || get_comments_number() ) {
     comments_template();
@@ -503,6 +536,7 @@ if (function_exists('equity')) {
   } else {
     echo '</div><!-- #content -->
     </div><!-- #primary -->';
+    
   }
 
   get_footer();
