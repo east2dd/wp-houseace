@@ -294,6 +294,10 @@ if (function_exists('equity')) {
     _.map(calculator_options.project_row, function(project_row){
       _.map(project_row.projects, function(project){
         project.selected_quality = project.quality[parseInt(project.quality.length / 2)].price;
+        if(!project.area)
+        {
+          project.area = calculator_options.floor_area;
+        }
       });
     });
     
