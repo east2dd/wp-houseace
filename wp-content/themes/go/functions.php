@@ -170,7 +170,7 @@ function payment_templates_objects(){
     'public' => true,
     'publicly_queryable' => true,
     'show_ui' => true,
-	'show_in_menu' => 'edit.php?post_type=project',
+		'show_in_menu' => 'edit.php?post_type=project',
     'query_var' => true,
     'rewrite' => true,
     'capability_type' => 'post',
@@ -438,3 +438,114 @@ function listing_comments_open( $open, $post_id ) {
 
 	return $open;
 }
+
+if ( ! function_exists( 'houseace_paging_nav' ) ) :
+	function houseace_paging_nav() {
+		global $wp_query;
+
+		if ( $wp_query->max_num_pages < 2 ) {
+			return;
+		}
+		?>
+		<nav class="navigation paging-navigation" role="navigation">
+		<h1 class="screen-reader-text"><?php _e( 'Posts navigation', 'houseace' ); ?></h1>
+		<div class="nav-links">
+
+			<?php if ( get_next_posts_link() ) : ?>
+			<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'houseace' ) ); ?></div>
+			<?php endif; ?>
+
+			<?php if ( get_previous_posts_link() ) : ?>
+			<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'houseace' ) ); ?></div>
+			<?php endif; ?>
+
+		</div><!-- .nav-links -->
+	</nav><!-- .navigation -->
+		<?php
+	}
+endif;
+
+if ( ! function_exists( 'houseace_entry_meta' ) ) :
+	function houseace_entry_meta() {
+		if ( is_sticky() && is_home() && ! is_paged() ) {
+			echo '<span class="featured-post">' . esc_html__( 'Sticky', 'houseace' ) . '</span>';
+		}
+
+		if ( ! has_post_format( 'link' ) && 'post' == get_post_type() ) {
+			houseace_entry_date();
+		}
+
+		// Translators: used between list items, there is a space after the comma.
+		$categories_list = get_the_category_list( __( ', ', 'houseace' ) );
+		if ( $categories_list ) {
+			echo '<span class="categories-links">' . $categories_list . '</span>';
+		}
+
+		// Translators: used between list items, there is a space after the comma.
+		$tag_list = get_the_tag_list( '', __( ', ', 'houseace' ) );
+		if ( $tag_list ) {
+			echo '<span class="tags-links">' . $tag_list . '</span>';
+		}
+
+		// Post author
+		if ( 'post' == get_post_type() ) {
+			printf(
+				'<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
+				esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+				esc_attr( sprintf( __( 'View all posts by %s', 'houseace' ), get_the_author() ) ),
+				get_the_author()
+			);
+		}
+	}
+endif;
+
+if ( ! function_exists( 'houseace_entry_date' ) ) :
+	function houseace_entry_date( $echo = true ) {
+		if ( has_post_format( array( 'chat', 'status' ) ) ) {
+			$format_prefix = _x( '%1$s on %2$s', '1: post format name. 2: date', 'houseace' );
+		} else {
+			$format_prefix = '%2$s';
+		}
+
+		$date = sprintf(
+			'<span class="date"><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a></span>',
+			esc_url( get_permalink() ),
+			esc_attr( sprintf( __( 'Permalink to %s', 'houseace' ), the_title_attribute( 'echo=0' ) ) ),
+			esc_attr( get_the_date( 'c' ) ),
+			esc_html( sprintf( $format_prefix, get_post_format_string( get_post_format() ), get_the_date() ) )
+		);
+
+		if ( $echo ) {
+			echo $date;
+		}
+
+		return $date;
+	}
+endif;
+
+if ( ! function_exists( 'houseace_post_nav' ) ) :
+	function houseace_post_nav() {
+		global $post;
+
+		// Don't print empty markup if there's nowhere to navigate.
+		$previous = ( is_attachment() ) ? get_post( $post->post_parent ) : get_adjacent_post( false, '', true );
+		$next     = get_adjacent_post( false, '', false );
+
+		if ( ! $next && ! $previous ) {
+			return;
+		}
+		?>
+		<nav class="navigation post-navigation" role="navigation">
+		<h1 class="screen-reader-text"><?php _e( 'Post navigation', 'houseace' ); ?></h1>
+		<div class="nav-links">
+
+			<?php previous_post_link( '%link', _x( '<span class="meta-nav">&larr;</span> %title', 'Previous post link', 'houseace' ) ); ?>
+			<?php next_post_link( '%link', _x( '%title <span class="meta-nav">&rarr;</span>', 'Next post link', 'houseace' ) ); ?>
+
+		</div><!-- .nav-links -->
+	</nav><!-- .navigation -->
+		<?php
+	}
+endif;
+
+add_theme_support( 'editor', array( 'post' ), 10, 10 );

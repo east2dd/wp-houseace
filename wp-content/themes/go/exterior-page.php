@@ -1,0 +1,801 @@
+<?php
+/*
+Template Name: Exterior
+*/
+?>
+
+<?php get_template_part('header2'); ?>
+
+<style>
+	
+	/*-------------------------------*/
+    /*      Code snippet by          */
+    /*      @maridlcrmn              */
+    /*-------------------------------*/
+
+
+    section {
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+
+    .quote {
+        color: rgba(0,0,0,.1);
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    /*-------------------------------*/
+    /*    Carousel Fade Transition   */
+    /*-------------------------------*/
+
+    #fade-quote-carousel.carousel {
+      padding-bottom: 60px;
+  }
+  #fade-quote-carousel.carousel .carousel-inner .item {
+      opacity: 0;
+      -webkit-transition-property: opacity;
+      -ms-transition-property: opacity;
+      transition-property: opacity;
+  }
+  #fade-quote-carousel.carousel .carousel-inner .active {
+      opacity: 1;
+      -webkit-transition-property: opacity;
+      -ms-transition-property: opacity;
+      transition-property: opacity;
+  }
+  #fade-quote-carousel.carousel .carousel-indicators {
+      bottom: 10px;
+  }
+  #fade-quote-carousel.carousel .carousel-indicators > li {
+      background-color: #e84a64;
+      border: none;
+  }
+  #fade-quote-carousel blockquote {
+    text-align: center;
+    border: none;
+}
+#fade-quote-carousel .profile-circle {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 100px;
+}
+</style>
+<!-- Page -->
+
+<div class="animsition" style="animation-duration: 800ms; opacity: 1;">
+    <section class="section padding-20 bg-red-800">
+        <div class="container">
+				
+					                    <div class="row">
+<div class="text-center white margin-xs-0">
+        <div class="font-size-50 margin-bottom-30">Exterior Home & Apartment Painting</div>
+      
+
+      </div>
+    </div>
+    
+  </section>
+	
+			<div class="padding-50 bg-white">
+
+				 <div class="row">
+					 <div class="col-md-12 blue-grey-800">
+						 <div class="font-size-20 padding-20">
+There’s nothing like a fresh coat of paint to boost your home’s curb appeal! While there are various ways to improve your exterior space, sprucing it up with paint is often the biggest bang for your buck. Paynts’s experienced crews are ready to assist you every step of the way, from choosing the right product, selecting colors, and prepping the space, to completing the project flawlessly. So, whether you’re simply updating your walls to look clean and new again, or getting creative with color and embracing new design trends, your house will instantly stand out from the neighbors, or be ready to put on the market if that’s your goal.					</div>
+				</div>
+			</div>
+			</div>
+<div class="container">
+				<div class="bg-grey-100">
+
+				 <div class="row">
+					 <div class="col-md-12 padding-20 text-center blue-grey-800">
+						 <div class="font-size-30 margin-20 text-center">
+							 Exterior Painting for Houses, Units and Apartments
+						 </div>
+						 <div class="col-md-4">
+							<div class="font-size-20 blue-grey-800">
+									TOWN HOUSES
+							 </div>
+						  <div class="font-size-20 blue-grey-800">
+									 TERRACE HOUSES
+									 </div></div>
+						 <div class="col-md-4">
+                   <div class="font-size-20 blue-grey-800">
+									 COMMERCIAL EXTERIORS
+									 </div>
+							  <div class="font-size-20 blue-grey-800">
+									 OFFICE EXTERIORS
+									 </div>
+						 </div>
+						 <div class="col-md-4">
+							 <div class="font-size-20 blue-grey-800">
+									 STANDALONE HOUSES
+									 </div>
+							  <div class="font-size-20 blue-grey-800">
+									 COUNCIL EXTERIORS
+									 </div>
+						 </div>
+						 </div>
+					</div>
+	</div>
+					<div class="bg-grey-200">
+						 <div class="row padding-20 blue-grey-800">
+							 	 <div class="font-size-30 blue-grey-800 margin-20 text-center">
+							 WHAT WE DO
+						 </div>
+					
+						
+						 <div class="col-md-4">
+							 <div class="padding-35 text-center">
+                  <i class="icon ti-pencil-alt" aria-hidden="true" style="font-size: 64px;"></i>
+								 <div class="font-size-30">
+                      Instant Quotes
+                    </div>
+								 <div class="font-size-20">
+									  Accurate, fixed price quotes in just 2 minutes
+								 </div>
+                  </div>
+						 </div>
+						  <div class="col-md-4">
+							 <div class="padding-35 text-center">
+                  <i class="icon ti-medall" aria-hidden="true" style="font-size: 64px;"></i>
+								 <div class="font-size-30">
+                      Expert Painters
+                    </div>
+								  <div class="font-size-20">
+										Handpicked, Licensed and Insured Painters
+         								 </div>
+                  </div>
+						 </div>
+						  <div class="col-md-4">
+							 <div class="padding-35 text-center">
+                  <i class="icon ti-user" aria-hidden="true" style="font-size: 64px;"></i>
+								 <div class="font-size-30">
+                      Project Management
+                    </div>
+								  <div class="font-size-20">
+                     One point of contact from setup to cleanup
+								 </div>
+                  </div>
+						 </div>
+					 </div>
+				  </div>
+		
+				
+				<section id="carousel" class="review-bg">    				
+	<div id="reviews" class="container">		
+		<div class="row">
+			<div class="font-size-40 text-center white">
+				Recent Reviews
+			</div>
+			<div class="col-md-12">
+				                    <iframe src="https://au.trustspot.io/merchant/TrustModule/carousel/Paynt" width="100%" height="270" seamless allowTransparency="true" scrolling="no" frameborder="0" style='border:none; overflow: hidden;'><p>View Our Reviews On TrustSpot</p></iframe>
+
+                <div class="quote hidden"><i class="fa fa-quote-left fa-4x"></i></div>
+				<div class="carousel hidden slide" id="fade-quote-carousel" data-ride="carousel" data-interval="3000">
+				  <!-- Carousel indicators -->
+                  <ol class="carousel-indicators">
+				    <li data-target="#fade-quote-carousel" data-slide-to="0" class="active"></li>
+				    <li data-target="#fade-quote-carousel" data-slide-to="1"></li>
+				    <li data-target="#fade-quote-carousel" data-slide-to="2"></li>
+                    <li data-target="#fade-quote-carousel" data-slide-to="3"></li>
+				  </ol>
+				  <!-- Carousel items -->
+				  <div class="carousel-inner">
+						 <div class="item">
+				    <div class="chat chat-head">
+                        <div class="chat-avatar">
+                                <a class="avatar">
+                                        <img src="<?php bloginfo('template_url'); ?>/assets/defaults/default-ava.png">
+                                </a>
+                        </div>
+                        <div class="chat-body">
+                                <div class="chat-content text-left">
+                                        <div class="margin-bottom-5 inline"><strong style="font-weight:normal;">Etienne R</strong> - Newport, Sydney </div><br/>
+																	<div class="rating rating-lg" data-score="5" data-plugin="rating" style="cursor: pointer;"><i data-alt="1" class="icon wb-star orange-600" title="bad"></i>&nbsp;<i data-alt="2" class="icon wb-star orange-600" title="poor"></i>&nbsp;<i data-alt="3" class="icon wb-star orange-600" title="regular"></i>&nbsp;<i data-alt="4" class="icon wb-star orange-600" title="good"></i>&nbsp;<i data-alt="5" class="icon wb-star orange-600" title="gorgeous"></i><input name="score" type="hidden" value="5"></div>
+                                        <p>From the beginning, the team at Paynt have demonstrated excellent client service and made the whole transaction an extremely pleasurable experience. At a time when my and I family were very stressed handling busy work lives and an upcoming overseas move the Paynt team have taken enormous pressure of us in getting our house ready to be rented out and that in the space of one week only. David (who managed the job on-site) and his team of painting professionals have done a fantastic job. I'm superbly happy with the diligence and the quality of their work. They have been great and uncomplicated to deal with, were very courteous and cleaned up after they were done with their work. A big Thank You to everyone who we have worked with at Paynt. I can only give you the highest recommendation. I wish I had known you earlier. </p>
+                                </div>
+                        </div>
+                </div>	
+				    </div>
+				    <div class="item">
+				    <div class="chat chat-head">
+                        <div class="chat-avatar">
+                                <a class="avatar">
+                                        <img src="<?php bloginfo('template_url'); ?>/assets/defaults/default-ava.png">
+                                </a>
+                        </div>
+                        <div class="chat-body">
+                                <div class="chat-content text-left">
+                                        <div class="margin-bottom-5 inline"><strong style="font-weight:normal;">Sandra L</strong> - Newtown, Sydney </div><br/>
+																	<div class="rating rating-lg" data-score="5" data-plugin="rating" style="cursor: pointer;"><i data-alt="1" class="icon wb-star orange-600" title="bad"></i>&nbsp;<i data-alt="2" class="icon wb-star orange-600" title="poor"></i>&nbsp;<i data-alt="3" class="icon wb-star orange-600" title="regular"></i>&nbsp;<i data-alt="4" class="icon wb-star orange-600" title="good"></i>&nbsp;<i data-alt="5" class="icon wb-star orange-600" title="gorgeous"></i><input name="score" type="hidden" value="5"></div>
+                                        <p>Everything looks great. I'm very happy with the job that they've done. We've even had one of our contractors come by and ask who our painter was because they were so impressed with their work. Thankyou to you too for all of the project management. It has been great dealing with you, and I've greatly appreciated your flexibility and understanding with the scheduling difficulties we've had to work around. </p>
+                                </div>
+                        </div>
+                </div>	
+				    </div>
+				    <div class="item">
+				    	<div class="chat chat-head">
+                        <div class="chat-avatar">
+                                <a class="avatar">
+                                        <img src="<?php bloginfo('template_url'); ?>/assets/defaults/default-ava.png">
+                                </a>
+                        </div>
+                        <div class="chat-body">
+                                <div class="chat-content text-left">
+                                        <div class="margin-bottom-5 inline"><strong style="font-weight:normal;">Julia P</strong> - Emu Plains </div><br/>
+																	<div class="rating rating-lg" data-score="5" data-plugin="rating" style="cursor: pointer;"><i data-alt="1" class="icon wb-star orange-600" title="bad"></i>&nbsp;<i data-alt="2" class="icon wb-star orange-600" title="poor"></i>&nbsp;<i data-alt="3" class="icon wb-star orange-600" title="regular"></i>&nbsp;<i data-alt="4" class="icon wb-star orange-600" title="good"></i>&nbsp;<i data-alt="5" class="icon wb-star orange-600" title="gorgeous"></i><input name="score" type="hidden" value="5"></div>
+                                        <p>The process was so easy and fast with a fantastic project manager and crew. I would highly recommend using this service to paint
+</p>
+                                </div>
+                        </div>
+                </div>
+				    </div>
+				    <div class="active item">
+				    	<div class="chat chat-head">
+                        <div class="chat-avatar">
+                                <a class="avatar">
+                                        <img src="<?php bloginfo('template_url'); ?>/assets/defaults/default-ava.png">
+                                </a>
+                        </div>
+                        <div class="chat-body">
+                                <div class="chat-content text-left">
+                                        <div class="margin-bottom-5 inline"><strong style="font-weight:normal;">Elizabeth L</strong> - Manly Beach </div><br/>
+																	<div class="rating rating-lg" data-score="5" data-plugin="rating" style="cursor: pointer;"><i data-alt="1" class="icon wb-star orange-600" title="bad"></i>&nbsp;<i data-alt="2" class="icon wb-star orange-600" title="poor"></i>&nbsp;<i data-alt="3" class="icon wb-star orange-600" title="regular"></i>&nbsp;<i data-alt="4" class="icon wb-star orange-600" title="good"></i>&nbsp;<i data-alt="5" class="icon wb-star orange-600" title="gorgeous"></i><input name="score" type="hidden" value="5"></div>
+                                        <p>So easy! I didn't have to waste time meeting different contractors on site, they gave me an instant price and started 2 days later. Highly recommended. </p>
+                                </div>
+                        </div>
+                </div>
+				    </div>
+                    <div class="item">
+    			    <div class="chat chat-head">
+                        <div class="chat-avatar">
+                                <a class="avatar">
+                                        <img src="<?php bloginfo('template_url'); ?>/assets/defaults/default-ava.png">
+                                </a>
+                        </div>
+                        <div class="chat-body">
+                                <div class="chat-content text-left">
+                                        <div class="margin-bottom-5 inline"><strong style="font-weight:normal;">Shana</strong> - Darlington, Sydney </div><br/>
+																	<div class="rating rating-lg" data-score="5" data-plugin="rating" style="cursor: pointer;"><i data-alt="1" class="icon wb-star orange-600" title="bad"></i>&nbsp;<i data-alt="2" class="icon wb-star orange-600" title="poor"></i>&nbsp;<i data-alt="3" class="icon wb-star orange-600" title="regular"></i>&nbsp;<i data-alt="4" class="icon wb-star orange-600" title="good"></i>&nbsp;<i data-alt="5" class="icon wb-star orange-600" title="gorgeous"></i><input name="score" type="hidden" value="5"></div>
+                                        <p>Super easy throughout the whole process. Having a dedicated job manager on board to co-ordinate the painter was great and thank you for help with the colours. Will definitely recommend this site. A++</p>
+                                </div>
+                        </div>
+                </div>
+				    </div>
+        
+				  </div>
+				</div>
+			</div>							
+		</div>
+	</div>
+</section>
+	
+			<div class="bg-grey-200 padding-50">
+				<div class="row">
+				<div class="col-md-8">
+					<div class="font-size-20 blue-grey-800">
+						<b>GET STARTED</b>
+						Receive an accurate quote in just 2 mins, select colors, and even book online.
+					</div>
+				</div>
+				<div class="col-md-4">
+					<a class="btn btn-primary btn-block btn-lg btn-raised" href="/add_quote/?templateId=10131">GET A FREE QUOTE</a>
+				</div>
+			</div>
+			</div>
+						</div>
+
+	 <div class="no-space">	
+  <div class="bg-white">
+			<div class="container">
+				 <div class="row">
+					 <div class="col-md-12 black text-center">
+        <div class="font-size-50 margin-10 blue-grey-800">
+				 How it works
+						 </div>
+						        <hr>
+
+						 <div class="col-md-4">
+							 <div class="padding-35 text-center">
+                  <i class="icon fa-flash red-700 margin-bottom-10" aria-hidden="true" style="font-size: 64px;"></i><br/>
+								 <div class="font-size-30">
+                      1. ONLINE QUOTE
+                    </div><br/>
+								 <div class="font-size-20">
+Fill out very basic information about the space you need painted and receive a fully inclusive quote in just 2 minutes.
+                 </div>
+                  </div>
+						 </div>
+						  <div class="col-md-4">
+							 <div class="padding-35 text-center">
+                  <i class="icon ti-medall red-700 margin-bottom-10" aria-hidden="true" style="font-size: 64px;"></i><br/>
+								 <div class="font-size-30">
+                      2. MEET & GREET
+                    </div><br/>
+								  <div class="font-size-20">
+Automatically get matched with your dedicated project manager, they'll finalise the quote and help with colours/scheduling.
+                 </div>
+                  </div>
+						 </div>
+						  <div class="col-md-4">
+							 <div class="padding-35 text-center">
+                  <i class="icon fa-credit-card red-700 margin-bottom-10" aria-hidden="true" style="font-size: 64px;"></i><br/>
+								 <div class="font-size-30">
+                      3. BOOK & PAY 
+                    </div><br/>
+								  <div class="font-size-20">
+Choose your colours, book and pay for your project online. Choose to start as early as 48 hrs from confirming your project details.
+                 </div>
+                  </div>
+						 </div>
+					 </div>
+				 </div>
+    </div></div>
+
+				<section id="carousel" class="review-bg">    				
+	<div id="reviews" class="container">		
+		<div class="row">
+			<div class="font-size-40 text-center white">
+				Recent Reviews
+			</div>
+			<div class="col-md-12">
+				                    <iframe src="https://au.trustspot.io/merchant/TrustModule/carousel/Paynt" width="100%" height="270" seamless allowTransparency="true" scrolling="no" frameborder="0" style='border:none; overflow: hidden;'><p>View Our Reviews On TrustSpot</p></iframe>
+
+                <div class="quote hidden"><i class="fa fa-quote-left fa-4x"></i></div>
+				<div class="carousel hidden slide" id="fade-quote-carousel" data-ride="carousel" data-interval="3000">
+				  <!-- Carousel indicators -->
+                  <ol class="carousel-indicators">
+				    <li data-target="#fade-quote-carousel" data-slide-to="0" class="active"></li>
+				    <li data-target="#fade-quote-carousel" data-slide-to="1"></li>
+				    <li data-target="#fade-quote-carousel" data-slide-to="2"></li>
+                    <li data-target="#fade-quote-carousel" data-slide-to="3"></li>
+				  </ol>
+				  <!-- Carousel items -->
+				  <div class="carousel-inner">
+						 <div class="item">
+				    <div class="chat chat-head">
+                        <div class="chat-avatar">
+                                <a class="avatar">
+                                        <img src="<?php bloginfo('template_url'); ?>/assets/defaults/default-ava.png">
+                                </a>
+                        </div>
+                        <div class="chat-body">
+                                <div class="chat-content text-left">
+                                        <div class="margin-bottom-5 inline"><strong style="font-weight:normal;">Etienne R</strong> - Newport, Sydney </div><br/>
+																	<div class="rating rating-lg" data-score="5" data-plugin="rating" style="cursor: pointer;"><i data-alt="1" class="icon wb-star orange-600" title="bad"></i>&nbsp;<i data-alt="2" class="icon wb-star orange-600" title="poor"></i>&nbsp;<i data-alt="3" class="icon wb-star orange-600" title="regular"></i>&nbsp;<i data-alt="4" class="icon wb-star orange-600" title="good"></i>&nbsp;<i data-alt="5" class="icon wb-star orange-600" title="gorgeous"></i><input name="score" type="hidden" value="5"></div>
+                                        <p>From the beginning, the team at Paynt have demonstrated excellent client service and made the whole transaction an extremely pleasurable experience. At a time when my and I family were very stressed handling busy work lives and an upcoming overseas move the Paynt team have taken enormous pressure of us in getting our house ready to be rented out and that in the space of one week only. David (who managed the job on-site) and his team of painting professionals have done a fantastic job. I'm superbly happy with the diligence and the quality of their work. They have been great and uncomplicated to deal with, were very courteous and cleaned up after they were done with their work. A big Thank You to everyone who we have worked with at Paynt. I can only give you the highest recommendation. I wish I had known you earlier. </p>
+                                </div>
+                        </div>
+                </div>	
+				    </div>
+				    <div class="item">
+				    <div class="chat chat-head">
+                        <div class="chat-avatar">
+                                <a class="avatar">
+                                        <img src="<?php bloginfo('template_url'); ?>/assets/defaults/default-ava.png">
+                                </a>
+                        </div>
+                        <div class="chat-body">
+                                <div class="chat-content text-left">
+                                        <div class="margin-bottom-5 inline"><strong style="font-weight:normal;">Sandra L</strong> - Newtown, Sydney </div><br/>
+																	<div class="rating rating-lg" data-score="5" data-plugin="rating" style="cursor: pointer;"><i data-alt="1" class="icon wb-star orange-600" title="bad"></i>&nbsp;<i data-alt="2" class="icon wb-star orange-600" title="poor"></i>&nbsp;<i data-alt="3" class="icon wb-star orange-600" title="regular"></i>&nbsp;<i data-alt="4" class="icon wb-star orange-600" title="good"></i>&nbsp;<i data-alt="5" class="icon wb-star orange-600" title="gorgeous"></i><input name="score" type="hidden" value="5"></div>
+                                        <p>Everything looks great. I'm very happy with the job that they've done. We've even had one of our contractors come by and ask who our painter was because they were so impressed with their work. Thankyou to you too for all of the project management. It has been great dealing with you, and I've greatly appreciated your flexibility and understanding with the scheduling difficulties we've had to work around. </p>
+                                </div>
+                        </div>
+                </div>	
+				    </div>
+				    <div class="item">
+				    	<div class="chat chat-head">
+                        <div class="chat-avatar">
+                                <a class="avatar">
+                                        <img src="<?php bloginfo('template_url'); ?>/assets/defaults/default-ava.png">
+                                </a>
+                        </div>
+                        <div class="chat-body">
+                                <div class="chat-content text-left">
+                                        <div class="margin-bottom-5 inline"><strong style="font-weight:normal;">Julia P</strong> - Emu Plains </div><br/>
+																	<div class="rating rating-lg" data-score="5" data-plugin="rating" style="cursor: pointer;"><i data-alt="1" class="icon wb-star orange-600" title="bad"></i>&nbsp;<i data-alt="2" class="icon wb-star orange-600" title="poor"></i>&nbsp;<i data-alt="3" class="icon wb-star orange-600" title="regular"></i>&nbsp;<i data-alt="4" class="icon wb-star orange-600" title="good"></i>&nbsp;<i data-alt="5" class="icon wb-star orange-600" title="gorgeous"></i><input name="score" type="hidden" value="5"></div>
+                                        <p>The process was so easy and fast with a fantastic project manager and crew. I would highly recommend using this service to paint
+</p>
+                                </div>
+                        </div>
+                </div>
+				    </div>
+				    <div class="active item">
+				    	<div class="chat chat-head">
+                        <div class="chat-avatar">
+                                <a class="avatar">
+                                        <img src="<?php bloginfo('template_url'); ?>/assets/defaults/default-ava.png">
+                                </a>
+                        </div>
+                        <div class="chat-body">
+                                <div class="chat-content text-left">
+                                        <div class="margin-bottom-5 inline"><strong style="font-weight:normal;">Elizabeth L</strong> - Manly Beach </div><br/>
+																	<div class="rating rating-lg" data-score="5" data-plugin="rating" style="cursor: pointer;"><i data-alt="1" class="icon wb-star orange-600" title="bad"></i>&nbsp;<i data-alt="2" class="icon wb-star orange-600" title="poor"></i>&nbsp;<i data-alt="3" class="icon wb-star orange-600" title="regular"></i>&nbsp;<i data-alt="4" class="icon wb-star orange-600" title="good"></i>&nbsp;<i data-alt="5" class="icon wb-star orange-600" title="gorgeous"></i><input name="score" type="hidden" value="5"></div>
+                                        <p>So easy! I didn't have to waste time meeting different contractors on site, they gave me an instant price and started 2 days later. Highly recommended. </p>
+                                </div>
+                        </div>
+                </div>
+				    </div>
+                    <div class="item">
+    			    <div class="chat chat-head">
+                        <div class="chat-avatar">
+                                <a class="avatar">
+                                        <img src="<?php bloginfo('template_url'); ?>/assets/defaults/default-ava.png">
+                                </a>
+                        </div>
+                        <div class="chat-body">
+                                <div class="chat-content text-left">
+                                        <div class="margin-bottom-5 inline"><strong style="font-weight:normal;">Shana</strong> - Darlington, Sydney </div><br/>
+																	<div class="rating rating-lg" data-score="5" data-plugin="rating" style="cursor: pointer;"><i data-alt="1" class="icon wb-star orange-600" title="bad"></i>&nbsp;<i data-alt="2" class="icon wb-star orange-600" title="poor"></i>&nbsp;<i data-alt="3" class="icon wb-star orange-600" title="regular"></i>&nbsp;<i data-alt="4" class="icon wb-star orange-600" title="good"></i>&nbsp;<i data-alt="5" class="icon wb-star orange-600" title="gorgeous"></i><input name="score" type="hidden" value="5"></div>
+                                        <p>Super easy throughout the whole process. Having a dedicated job manager on board to co-ordinate the painter was great and thank you for help with the colours. Will definitely recommend this site. A++</p>
+                                </div>
+                        </div>
+                </div>
+				    </div>
+        
+				  </div>
+				</div>
+			</div>							
+		</div>
+	</div>
+          <div id="quote">    </div>
+</section>
+			
+			<div class="bg-white">
+				<div class="container">
+                  <div class="steps steps-sm row margin-bottom-0">
+                <div class="step col-lg-3 current active" data-target="#exampleAccount" role="tab" aria-expanded="true" >
+                  <span class="step-number">1</span>
+                  <div class="step-desc">
+                    <span class="step-title">Choose Quote</span>
+                    <p>Pick your instant quote</p>
+                  </div>
+                </div>
+
+                <div class="step col-lg-3 hidden-xs disabled" data-target="#exampleBilling" role="tab" aria-expanded="false" >
+                  <span class="step-number">2</span>
+                  <div class="step-desc">
+                    <span class="step-title">Choose Options</span>
+                    <p>only takes 60 seconds</p>
+                  </div>
+                </div>
+
+           <div class="step col-lg-3 hidden-xs disabled" data-target="#exampleGetting" role="tab" aria-expanded="false" >
+                    <span class="step-number">3</span>
+                  <div class="step-desc">
+                    <span class="step-title">Contact Details</span>
+                    <p>When and Where?</p>
+                  </div>
+                </div>
+         
+                <div class="step col-lg-3 hidden-xs disabled" data-target="#exampleGetting" role="tab" aria-expanded="false" >
+                  <span class="step-number">4</span>
+                  <div class="step-desc">
+                    <span class="step-title">Instant Price</span>
+                    <p>Get your fixed quote</p>
+                  </div>
+                </div>
+              </div>
+            
+       
+ 			  <div class="row padding-top-30">
+        <div class="font-size-50 margin-10 blue-grey-800 text-center">
+					Choose Quote 
+				</div><div class="blue-grey-800 font-size-20 text-center">
+					 Get a fully inclusive quote in just 60 seconds.
+					</div>
+				<div class="col-md-12 padding-top-50 padding-bottom-50">	
+				 <?php include('quote-templates-v2/views/step_1_new_main.php'); ?>
+				</div>
+				</div>
+				</div>
+  </div>
+			
+			
+			</div>
+
+
+         <div class="row no-space">
+                <div class="col-md-8 hidden-xs happy-bg">
+                <div class="height-400"> 
+							</div></div>
+
+                <div class="col-md-4 bg-red-600">
+                  <div class="text-center bg-red-700 white height-400 padding-50">
+                    <div class="font-size-30">
+                       <i class="icon pe-sun" aria-hidden="true" style="font-size: 64px;"></i><br/>
+                     Your Happiness, Guaranteed
+                    </div>
+                    <div class="font-size-20">
+                      Your happiness is our goal. If you're not happy, we'll work to make it right. Our friendly project managers are available 24 hours a day, 7 days a week. 
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+	
+
+		<section class="section section-feature text-center" id="services" data-anchor="services">
+			<div class="container">
+				        <div class="row feature-group">
+      
+											<div class="font-size-50 margin-bottom-30 blue-grey-800">
+								Our Services
+							</div>
+						        <p class="lead wow fadeInDown">Paynt takes the pain out of painting with instant quotes, hand picked expert painters and our <b>100% SATISFACTION GUARANTEE</b>  </p>
+									
+									<div class="row no-space">
+                <div class="col-sm-6">
+                <div class="vertical-align text-center blue-grey-700 padding-30"> 
+									<div class="font-size-40">
+										HOME AND APARTMENT PAINTING
+									</div>
+								<div class="vertical-align-middle font-size-20">
+Transform your home with color, whether it’s a top to bottom house repaint, an eye-catching feature wall. We’re ready for projects of all shapes and sizes, interior and exterior - we’ll have a great team of residential painters at your service within 48 hours of booking!
+									</div></div>
+																						<a class="btn btn-raised btn-sm btn-primary" href="/add_quote">GET STARTED</a>
+</div>
+
+                <div class="col-sm-6 hidden-xs">
+                  <div class="vertical-align text-center bg-grey-200 blue-grey-700 padding-30 height-400">
+                    <div class="vertical-align-middle font-size-60">
+                       <i class="icon pe-home" aria-hidden="true" style="font-size: 120px;"></i><br/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+				
+									<div class="row no-space">
+										  <div class="col-sm-6 hidden-xs">
+                  <div class="vertical-align text-center bg-grey-200 blue-grey-700 padding-30 height-400">
+                    <div class="vertical-align-middle font-size-60">
+                       <i class="icon pe-tools" aria-hidden="true" style="font-size: 120px;"></i><br/>
+                    </div>
+                  </div>
+                </div>
+										
+                <div class="col-sm-6">
+                <div class="vertical-align text-center blue-grey-700 padding-30"> 
+									<div class="font-size-40">
+										COMMERCIAL PAINTING
+									</div>
+								<div class="vertical-align-middle font-size-20">
+     We offer commercial painting services for offices, retail locations, restaurants and hospitality venues, as well as apartment buildings and multi-family homes. Our crews are equipped to handle everything from new construction production work to high-end speciality paint and wall coverings.
+									</div></div>
+																						<a class="btn btn-sm btn-raised btn-primary" href="/add_quote">GET STARTED</a>
+										</div>
+
+              
+              </div>
+									
+											<div class="row no-space">
+																		
+                <div class="col-sm-6">
+                <div class="vertical-align text-center blue-grey-700 padding-30"> 
+									<div class="font-size-40">
+										CUSTOM WORK
+									</div>
+								<div class="vertical-align-middle font-size-20">
+    When just changing the wall color isn’t enough, create something unique for your space! We offer custom paint work including custom wall murals, decorative painting, faux finishing, graffiti art, chalk and whiteboard painting, stenciling, wallpaper and vinyl installation, and more!
+									</div></div>
+												<a class="btn btn-sm btn-raised btn-primary" href="/add_quote">GET STARTED</a>
+												</div>
+												
+										  <div class="col-sm-6 hidden-xs">
+                  <div class="vertical-align text-center bg-grey-200 blue-grey-700 padding-30 height-400">
+                    <div class="vertical-align-middle font-size-60">
+                       <i class="icon pe-paint" aria-hidden="true" style="font-size: 120px;"></i><br/>
+                    </div>
+                  </div>
+                </div>
+				
+
+              
+              </div>
+															
+</div>
+				
+				   <div class="row feature-group">
+      
+											<div class="font-size-50 margin-30 blue-grey-800">
+								Our Locations
+							</div>
+						        <p class="lead wow fadeInDown">We service all of Sydney. </p>
+									
+						<div class="row">
+							<div class="col-md-2">
+              <h4>
+								Sydney CBD
+								</h4>
+							</div>		
+							<div class="col-md-2">
+              <h4>
+								Eastern Suburbs
+								</h4>
+							</div>		
+							<div class="col-md-2">
+              <h4>
+								Inner West
+								</h4>
+							</div>
+							<div class="col-md-2">
+              <h4>
+               North Shore
+								</h4>
+							</div>
+							<div class="col-md-2">
+              <h4>
+               Canterbury Bankstown
+								</h4>
+							</div>
+								<div class="col-md-2">
+              <h4>
+               Hills District
+								</h4>
+							</div>
+									</div>
+						 <div class="row">
+							<div class="col-md-2">
+              <h4>
+								Northern Beches
+								</h4>
+							</div>		
+							<div class="col-md-2">
+              <h4>
+								Southern Sydney
+								</h4>
+							</div>		
+							<div class="col-md-2">
+              <h4>
+								Western Sydney
+								</h4>
+							</div>
+							<div class="col-md-2">
+                <h4>
+               St George
+								</h4>
+							</div>
+							<div class="col-md-2">
+                <h4>
+                Forest District
+								</h4>
+							</div>
+								<div class="col-md-2">
+              <h4>
+                Macarthur
+								</h4>
+							</div>
+									</div>
+													
+</div>
+					</div>
+				</section>
+   	<div class="bg-red-700 padding-40" id="why" data-anchor="why">
+			 
+			 
+          <div class="container white">
+            <div class="row">
+							<div class="col-md-6">
+								<div class="font-size-40 margin-bottom-30">
+							 What is Paynt?
+							</div>
+								
+									<div class="margin-20 font-size-15">
+								<i class="icon fa-calculator" aria-hidden="true"></i>
+										 Fast, data-driven, transparent online quoting and secure booking
+								</div>
+									<div class="margin-20 font-size-15">
+								<i class="icon fa-group"  aria-hidden="true"></i>
+                     Licensed and insured painting crews, certified for quality and professionalism									
+								</div>
+									<div class="margin-20 font-size-15">
+								<i class="icon fa-heart-o"  aria-hidden="true"></i>
+										High quality paints in over 3,000 colors
+								</div>
+									<div class="margin-20 font-size-15">
+								<i class="icon fa-paint-brush"  aria-hidden="true"></i>
+										Complete setup, prep, and clean up
+										
+								</div>
+									<div class="margin-20 font-size-15">
+								<i class="icon fa-street-view"  aria-hidden="true"></i>
+										Dedicated project managers for a single point of contact and coordination
+								</div>
+									<div class="margin-20 font-size-15">
+								<i class="icon fa-calendar" aria-hidden="true"></i>
+										Flexible start dates and fast turn around times for your convenience
+								</div>
+							</div>
+						
+								<div class="col-md-6 padding-30 text-center">
+				<div class="widget">
+            <div class="widget-content blue-grey-800 padding-30">
+					<div class="font-size-20 margin-bottom-30">
+          The easiest path to fresh walls
+					</div>
+				<b>	We solved a glaring problem most people know too well: completing a home or office painting project can be a painful and confusing process.
+				</b><br/>
+				<p>Paynt is the easiest way to get your home or office painted. Just answer our simple questions, and in under 2 minutes, you’ll have an accurate quote. If you like the price our paint crews can start with just 48 hours notice. We assign you a dedicated job manager to help you work through all of the details. Painting your home or office has never been this fun. 
+			</p>
+				</div>
+		
+						</div>
+							</div>
+            </div>
+          </div>
+       </div>
+    
+		
+  <!-- Footer -->
+  <div id="contact" class="footer bg-blue-grey-800">
+    <div class="footer-detail">
+     <div class="container">
+                <div class="row white padding-30">
+                    <div class="col-md-6">
+											<div class="col-md-6">
+											<div class="font-size-20 font-weight-200 margin-bottom-30 white">HELP</div>
+                     <ul class="nav">
+                           <li><a href="/faq" class="white">FAQ</a></li> 
+                           <li><a href="/terms" class="white">Terms & Conditions</a></li> 
+                           <li><a href="/privacy" class="white">Privacy</a></li> 
+                           <li><a href="/affiliates" class="white">Affiliate Partners</a></li> 
+                           <li><a href="#contact" class="white">Contact</a></li> 
+                          
+                           </ul>      
+											</div>
+											<div class="col-md-6">
+											<div class="font-size-20 font-weight-200 margin-bottom-30 white">ABOUT</div>
+                            <ul class="nav">
+                           <li><a href="#why" class="white">About</a></li> 
+                           <li><a href="#services" class="white">Services</a></li> 
+                           <li><a href="/sign-in" class="white">Login</a></li> 
+                           <li><a href="/sign-up" class="white">Contractor Signup</a></li> 
+                           </ul>      
+                    </div>
+									</div>
+                    <div class="col-md-6 white">
+											        <div class="font-size-30 margin-bottom-30 white">Questions?</div>
+
+												<?php echo do_shortcode('[contact-form-7 id="10041" title="Front-contact"]'); ?>
+                            
+											</div>
+                </div>
+			 <hr/>
+			 <div class="row">
+				 <div class="col-md-3">
+					 <a href="<?php bloginfo('url'); ?>">
+            <img class="navbar-brand-logo margin-top-50" src="<?php bloginfo('template_url'); ?>/assets/images/payntwt.png" title="Paynt">
+          </a>
+				 </div>
+				 <div class="col-md-3">
+					                                 <iframe src="https://au.trustspot.io/merchant/TrustModule/badge_4/Paynt" width="245" height="215" seamless allowTransparency="true" scrolling="no" frameborder="0" style='border:none; overflow: hidden;'><p>View Our Reviews On TrustSpot</p></iframe>
+                                
+				 </div>
+				  <div class="col-md-6">
+					 <div class="font-size-30 white">
+						ABOUT US
+						</div>
+						<small class="white">
+				      Paynt is the easiest way to get your home or office painted. Just answer our simple questions, and in under 2 minutes, you’ll have an accurate quote. If you like the price our paint crews can start with just 48 hours notice. We assign you a dedicated job manager to help you work through all of the details. Painting your home or office has never been this easy. 
+						</p>
+				 </div>
+			 </div>
+            </div>
+    </div>
+    
+  
+  </div>
+<footer class="footer bg-blue-grey-800">
+    <div class="container white padding-10">
+     <div class="inline">
+			 <p class="text-left">Copyright © 2017 Paynt. All Rights Reserved.</p> 
+			</div> 
+    </div>
+  </footer>
+  <!-- Footer -->
+<?php get_footer(); ?>
