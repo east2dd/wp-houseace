@@ -59,8 +59,8 @@ function single_listing_post_content() {
             <input id="postcode" class="form-control" v-model="calculator_options.zip" type="number"/>
           </div>
           <div class="col-md-6 col-xs-6">
-            <label for="postcode">Sale Price:</label>
-            <input id="postcode" class="form-control" v-model="calculator_options.sale_price" type="number"/>
+            <label for="area">Floor Area:</label>
+            <input id="area" class="form-control input-lg" type="number" v-model="calculator_options.floor_area"/>
           </div>
           <div class="col-md-6 col-xs-6">
             <label for="beds">Beds:</label>
@@ -95,8 +95,9 @@ function single_listing_post_content() {
             </select>
           </div>
           <div class="col-md-12 col-xs-12">
-            <label for="area">Floor Area:</label>
-            <input id="area" class="form-control input-lg" type="number" v-model="calculator_options.floor_area"/>
+            <label for="postcode">Sale Price:</label>
+            <input id="postcode" class="form-control" v-model="calculator_options.sale_price" type="number"/>
+            <div class="alert alert-danger" v-if="!calculator_options.sale_price || calculator_options.sale_price <= 0">Sale price should not be empty.</div>
           </div>
         </div>
       </div>
@@ -206,6 +207,7 @@ if (function_exists('equity')) {
       <div class="row black padding-10">
         <div class="col-md-1">
           <input type="number"  class="form-control" v-model="data.area"/>
+           
         </div>
         <div class="col-md-3">
           <div class="font-size-20 font-weight-600 text-center">
@@ -291,15 +293,34 @@ if (function_exists('equity')) {
     }
 
     var app = null;
-    _.map(calculator_options.project_row, function(project_row){
-      _.map(project_row.projects, function(project){
-        project.selected_quality = project.quality[parseInt(project.quality.length / 2)].price;
-        if(!project.area)
-        {
-          project.area = calculator_options.floor_area;
-        }
+    function app_update_project_areas(){
+      _.map(calculator_options.project_row, function(project_row){
+        _.map(project_row.projects, function(project){
+          project.selected_quality = project.quality[parseInt(project.quality.length / 2)].price;
+          if(!project.area)
+          {
+            project.from_floor_area = true;
+            project.area = calculator_options.floor_area;
+          }
+        });
       });
-    });
+    }
+
+    function sync_project_areas_and_floor_area(){
+      _.map(calculator_options.project_row, function(project_row){
+        _.map(project_row.projects, function(project){
+          project.selected_quality = project.quality[parseInt(project.quality.length / 2)].price;
+          if(project.from_floor_area)
+          {
+            project.area = calculator_options.floor_area;
+          }
+        });
+      });
+    }
+
+    app_update_project_areas();
+
+    
     
     jQuery(function(){
       app = new Vue({
@@ -310,12 +331,23 @@ if (function_exists('equity')) {
         mounted: function(){
           
         },
+        computed: {
+          floor_area() {
+            return this.calculator_options.floor_area;
+          }
+        },
         filters: {
           round2: function(value){
             return Math.round(value * 100) / 100
           }
         },
-        methods: {
+        watch: {
+          'calculator_options.floor_area': function (newVal, oldVal){
+              console.log(calculator_options.floor_area);
+              sync_project_areas_and_floor_area()
+          },
+        },
+        methods: {  
           estimate: function(){
             let total_price = _.sumBy(calculator_options.project_row, (project_row)=>{
 
