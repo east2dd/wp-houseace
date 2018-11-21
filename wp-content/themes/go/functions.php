@@ -548,4 +548,4 @@ if ( ! function_exists( 'houseace_post_nav' ) ) :
 	}
 endif;
 
-add_theme_support( 'editor', array( 'post' ), 10, 10 );
+add_theme_support( 'editor', array( 'post' ) );
