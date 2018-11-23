@@ -63,13 +63,13 @@ if($projectVersion == true) {
 
         //  if not logged
         else {
-                wp_redirect(home_url() . "/sign-in?redirect=" . $projectId);
-                die;
+          get_template_part('project-templates/main_v2/project','public');
+          // wp_redirect(home_url() . "/sign-in?redirect=" . $projectId);
+          die;
         }
 }
 else {
         echo "This project created in old version of Renovar. Soon it will be converted into new version and you'll have an ability to see it!";
         die;
 }
-
 ?>
